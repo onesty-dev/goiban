@@ -24,8 +24,6 @@ THE SOFTWARE.
 
 package goiban
 
-import data "github.com/fourcube/goiban-data"
-
 /*
 	Represents the result of an IBAN validation.
 */
@@ -33,7 +31,7 @@ type ValidationResult struct {
 	Valid        bool            `json:"valid"`
 	Messages     []string        `json:"messages"`
 	Iban         string          `json:"iban"`
-	BankData     data.BankInfo   `json:"bankData"`
+	BankData     BankInfo        `json:"bankData"`
 	CheckResults map[string]bool `json:"checkResults"`
 }
 
@@ -43,7 +41,7 @@ func NewValidationResult(valid bool, message string, iban string) *ValidationRes
 	if len(message) > 0 {
 		messages = append(messages, message)
 	}
-	return &ValidationResult{valid, messages, iban, *&data.BankInfo{}, map[string]bool{}}
+	return &ValidationResult{valid, messages, iban, *&BankInfo{}, map[string]bool{}}
 }
 
 /*

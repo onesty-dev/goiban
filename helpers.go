@@ -26,7 +26,6 @@ package goiban
 
 import (
 	"bufio"
-	"log"
 	"os"
 	"strconv"
 )
@@ -66,7 +65,6 @@ func readLines(path string, out chan string) {
 	file, err := os.Open(path)
 	if err != nil {
 		out <- ""
-		log.Printf("Failed to open %s: %v", path, err)
 		return
 	}
 
